@@ -1,0 +1,15 @@
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UMLEditor.csprojAssemblyReference.cache
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UMLEditor.UMLEditorForm.resources
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UMLEditor.Properties.Resources.resources
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UMLEditor.Views.Dialogs.RenameDialog.resources
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UMLEditor.csproj.GenerateResource.cache
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UMLEditor.csproj.CoreCompileInputs.cache
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\bin\Debug\UML Editor.exe.config
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\bin\Debug\UML Editor.exe
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\bin\Debug\UML Editor.pdb
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\bin\Debug\MetroFramework.Design.dll
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\bin\Debug\MetroFramework.dll
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\bin\Debug\MetroFramework.Fonts.dll
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UMLEditor.csproj.CopyComplete
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UML Editor.exe
+F:\軟工實務\作業二\UMLEditor\UMLEditor\UMLEditor\obj\Debug\UML Editor.pdb
