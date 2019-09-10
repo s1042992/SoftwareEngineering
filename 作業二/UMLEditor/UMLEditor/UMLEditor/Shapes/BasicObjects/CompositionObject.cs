@@ -164,6 +164,7 @@ namespace UMLEditor.Shapes.BasicObjects
             }
         }
 
+
         /// <summary>
         /// Updates the size of <see cref="CompositionObject"/> (group) object.
         /// </summary>

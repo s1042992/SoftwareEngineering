@@ -27,7 +27,7 @@ namespace UMLEditor.Actions
         /// <seealso cref="UMLAction.Trigger()"/>
         public override void Trigger()
         {
-            Shape[] selectedShapes = Canvas.SelectedShapes;
+            Shape[] selectedShapes =  Canvas.SelectedShapes;
 
             if (selectedShapes.Length < 2)
             {
@@ -58,8 +58,14 @@ namespace UMLEditor.Actions
             {
                 if (shape is BasicObject)
                 {
-                    Canvas.RemoveShape(shape);
+                    // 在9/11 04:05am終於修正第一個bug了...感動，
+                    // 此solution為group後的shapes無法移動後所做的修正-->(將Canvas.RemoveShape(shape)註解掉，也就是說要讓group後的shapes是保留在Canvas上的)
+
+                    //Canvas.RemoveShape(shape);
                     compositionObject.Add(shape);
+                    //shape.SetPort(0, null);
+
+
                 }
             }
 
