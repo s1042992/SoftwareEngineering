@@ -405,7 +405,7 @@ namespace UMLEditor.Shapes
             Y += offsetY;
             for (int i = 0; i < Ports.Length; i++)
             {
-                if (Ports[i].Movable)
+                if (Ports[i]!=null && Ports[i].Movable)
                 {
                     Ports[i].Move(offsetX, offsetY);
                 }
@@ -420,7 +420,8 @@ namespace UMLEditor.Shapes
         {
             for (int i = 0; i < Ports.Length; i++)
             {
-                Ports[i].Paint(g);
+                if(Ports[i]!=null)
+                    Ports[i].Paint(g);
             }
         }
 
@@ -549,8 +550,11 @@ namespace UMLEditor.Shapes
 
             for (int i = 0; i < Ports.Length; i++)
             {
-                Ports[i].Visible = isSelected;
-                Ports[i].Movable = isSelected;
+                if (Ports[i] != null)
+                {
+                    Ports[i].Visible = isSelected;
+                    Ports[i].Movable = isSelected;
+                }
             }
         }
 
