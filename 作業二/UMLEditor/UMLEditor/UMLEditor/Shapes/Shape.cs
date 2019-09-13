@@ -255,6 +255,22 @@ namespace UMLEditor.Shapes
             Debug.Assert(combination != null);
             Combinations.Add(combination);
         }
+        /// <summary>
+        /// 09/14 修正在ungroup時object的port消失情形
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        public void InitializePorts(int X,int Y)
+        {
+            Ports = new Port[4];
+            for (int i = 0; i < Ports.Length; i++)
+            {
+                Ports[0] = new Port(X, Y+Height / 2); //Left
+                Ports[1] = new Port(X + Width / 2, Y); //Top
+                Ports[2] = new Port(X + Width / 2, Y + Height); //Down
+                Ports[3] = new Port(X + Width, Y + Height / 2); //Right
+            }
+        }
 
         /// <summary>
         /// Removes the matched <see cref="Combination"/> from this <see cref="Shape"/>.
@@ -515,6 +531,8 @@ namespace UMLEditor.Shapes
 
             Ports[index] = port;
         }
+
+        
 
         /// <summary>
         /// Sets the size to the given width and height.

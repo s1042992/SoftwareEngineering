@@ -56,7 +56,7 @@ namespace UMLEditor.Shapes.BasicObjects
         /// <summary>
         /// Initializes the four <see cref="Port"/>s of this <see cref="BasicObject"/>.
         /// </summary>
-        private void InitializePorts()
+        public void InitializePorts()
         {
             Ports = new Port[PortCount];
             for (int i = 0; i < Ports.Length; i++)

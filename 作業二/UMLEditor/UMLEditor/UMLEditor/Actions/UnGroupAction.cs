@@ -58,8 +58,11 @@ namespace UMLEditor.Actions
 
                     while (shape.Count > 0)
                     {
-                        Shape tempShape = shape.RemoveFirst();
+                        Shape tempShape =  shape.RemoveFirst();
                         tempShape.IsSelected = false;
+                        //09 / 14 修正在ungroup時object的port消失情形
+                        tempShape.InitializePorts(tempShape.X,tempShape.Y);
+
                         Canvas.AddShape(tempShape);
                     }
                 }
