@@ -161,6 +161,7 @@ namespace UMLEditor.Shapes.ConnectionLines
         /// </remarks>
         private void UpdateLocation()
         {
+
             X = Math.Min(Ports[0].X, Ports[1].X);
             Y = Math.Min(Ports[0].Y, Ports[1].Y);
         }

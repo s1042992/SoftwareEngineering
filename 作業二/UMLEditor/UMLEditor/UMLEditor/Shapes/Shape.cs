@@ -136,7 +136,7 @@ namespace UMLEditor.Shapes
         /// <summary>
         /// Stores all <see cref="Port"/>(s) it has.
         /// </summary>
-        protected Port[] Ports;
+        public Port[] Ports;
 
         /// <summary>
         /// Stores the name of this <see cref="Shape"/>.
@@ -172,7 +172,7 @@ namespace UMLEditor.Shapes
         /// <summary>
         /// Generates a <see cref="Shape"/> instance.
         /// </summary>
-        protected Shape()
+        public Shape()
         {
             ForeColor = Color.White;
             BackColor = Color.LightSlateGray;
@@ -270,20 +270,23 @@ namespace UMLEditor.Shapes
             
             Combinations.Remove(combination);
         }
+        
 
         /// <summary>
         /// Destroys all <see cref="Combination"/>s in this <see cref="Shape"/>.
         /// </summary>
         public virtual void DestroyAllCombinations()
         {
+            // 9/13修正了選取兩物件連線時無法一次選取刪除的問題
             Debug.Assert(Combinations != null);
-
-            while (Combinations.Count > 0)
+            int temp = 0;
+            while (Combinations.Count > 0 && temp < Combinations.Count)
             {
-                Combinations[0].Destroy();
+                Combinations[temp].Destroy();
+                temp++;
             }
         }
-
+        
         /// <summary>
         /// Finds and gets a nearest <see cref="Port"/> from this <see cref="Shape"/>.
         /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using UMLEditor.Shapes;
 using UMLEditor.Shapes.BasicObjects;
-
+using UMLEditor.Pseudo;
 namespace UMLEditor.Actions
 {
     /// <summary>
@@ -56,11 +56,17 @@ namespace UMLEditor.Actions
 
             foreach (Shape shape in shapes)
             {
-                if (shape is BasicObject)
+                if (shape is BasicObject )
                 {
                     //0911 group bug fixed 讓group起來的物件能夠移動並且刪除其port (根據定義 compositionObject不可有port)
                     //Canvas.RemoveShape(shape);
-                    
+
+                    /* 不知為何沒用
+                    shape.Ports[0].Visible = false;
+                    shape.Ports[1].Visible = false;
+                    shape.Ports[2].Visible = false;
+                    shape.Ports[3].Visible = false;
+                    */
                     shape.SetPort(0, null);
                     shape.SetPort(1, null);
                     shape.SetPort(2, null);
@@ -68,6 +74,10 @@ namespace UMLEditor.Actions
                    
                     compositionObject.Add(shape);
                 }
+                else
+                    compositionObject.Add(shape);
+
+
             }
 
             compositionObject.UpdateSize();
