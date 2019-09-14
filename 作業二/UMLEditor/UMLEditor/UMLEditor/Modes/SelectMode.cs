@@ -181,7 +181,8 @@ namespace UMLEditor.Modes
         private void MultipleSelect(Shape selectedArea)
         {
             Point p1 = new Point(selectedArea.X, selectedArea.Y);
-            Point p2 = new Point(selectedArea.X + selectedArea.Width, selectedArea.X + selectedArea.Height);
+            // 09/14修正select範圍 bug   第2個parament "selectedArea.X" 應為selectedArea.Y
+            Point p2 = new Point(selectedArea.X + selectedArea.Width, selectedArea.Y + selectedArea.Height);
 
             foreach (Shape shape in Canvas.Shapes)
             {
