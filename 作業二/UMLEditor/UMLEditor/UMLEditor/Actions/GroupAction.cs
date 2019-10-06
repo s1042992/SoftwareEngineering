@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using UMLEditor.Shapes;
 using UMLEditor.Shapes.BasicObjects;
-
+using UMLEditor.Pseudo;
 namespace UMLEditor.Actions
 {
     /// <summary>
@@ -27,7 +27,7 @@ namespace UMLEditor.Actions
         /// <seealso cref="UMLAction.Trigger()"/>
         public override void Trigger()
         {
-            Shape[] selectedShapes =  Canvas.SelectedShapes;
+            Shape[] selectedShapes = Canvas.SelectedShapes;
 
             if (selectedShapes.Length < 2)
             {
@@ -56,17 +56,28 @@ namespace UMLEditor.Actions
 
             foreach (Shape shape in shapes)
             {
-                if (shape is BasicObject)
+                if (shape is BasicObject )
                 {
-                    // 在9/11 04:05am終於修正第一個bug了...感動，
-                    // 此solution為group後的shapes無法移動後所做的修正-->(將Canvas.RemoveShape(shape)註解掉，也就是說要讓group後的shapes是保留在Canvas上的)
-
+                    //0911 group bug fixed 讓group起來的物件能夠移動並且刪除其port (根據定義 compositionObject不可有port)
                     //Canvas.RemoveShape(shape);
+
+                    /* 不知為何沒用
+                    shape.Ports[0].Visible = false;
+                    shape.Ports[1].Visible = false;
+                    shape.Ports[2].Visible = false;
+                    shape.Ports[3].Visible = false;
+                    */
+                    shape.SetPort(0, null);
+                    shape.SetPort(1, null);
+                    shape.SetPort(2, null);
+                    shape.SetPort(3, null);
+                   
                     compositionObject.Add(shape);
-                    //shape.SetPort(0, null);
-
-
                 }
+                else
+                    compositionObject.Add(shape);
+
+
             }
 
             compositionObject.UpdateSize();

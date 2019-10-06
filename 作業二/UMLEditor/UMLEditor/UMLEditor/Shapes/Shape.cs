@@ -136,7 +136,7 @@ namespace UMLEditor.Shapes
         /// <summary>
         /// Stores all <see cref="Port"/>(s) it has.
         /// </summary>
-        protected Port[] Ports;
+        public Port[] Ports;
 
         /// <summary>
         /// Stores the name of this <see cref="Shape"/>.
@@ -172,7 +172,7 @@ namespace UMLEditor.Shapes
         /// <summary>
         /// Generates a <see cref="Shape"/> instance.
         /// </summary>
-        protected Shape()
+        public Shape()
         {
             ForeColor = Color.White;
             BackColor = Color.LightSlateGray;
@@ -255,6 +255,22 @@ namespace UMLEditor.Shapes
             Debug.Assert(combination != null);
             Combinations.Add(combination);
         }
+        /// <summary>
+        /// 09/14 修正在ungroup時object的port消失情形
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        public void InitializePorts(int X,int Y)
+        {
+            Ports = new Port[4];
+            for (int i = 0; i < Ports.Length; i++)
+            {
+                Ports[0] = new Port(X, Y+Height / 2); //Left
+                Ports[1] = new Port(X + Width / 2, Y); //Top
+                Ports[2] = new Port(X + Width / 2, Y + Height); //Down
+                Ports[3] = new Port(X + Width, Y + Height / 2); //Right
+            }
+        }
 
         /// <summary>
         /// Removes the matched <see cref="Combination"/> from this <see cref="Shape"/>.
@@ -270,20 +286,23 @@ namespace UMLEditor.Shapes
             
             Combinations.Remove(combination);
         }
+        
 
         /// <summary>
         /// Destroys all <see cref="Combination"/>s in this <see cref="Shape"/>.
         /// </summary>
         public virtual void DestroyAllCombinations()
         {
+            // 9/13修正了選取兩物件連線時無法一次選取刪除的問題
             Debug.Assert(Combinations != null);
-
-            while (Combinations.Count > 0)
+            int temp = 0;
+            while (Combinations.Count > 0 && temp < Combinations.Count)
             {
-                Combinations[0].Destroy();
+                Combinations[temp].Destroy();
+                temp++;
             }
         }
-
+        
         /// <summary>
         /// Finds and gets a nearest <see cref="Port"/> from this <see cref="Shape"/>.
         /// </summary>
@@ -405,7 +424,7 @@ namespace UMLEditor.Shapes
             Y += offsetY;
             for (int i = 0; i < Ports.Length; i++)
             {
-                if (Ports[i].Movable)
+                if (Ports[i]!=null && Ports[i].Movable)
                 {
                     Ports[i].Move(offsetX, offsetY);
                 }
@@ -420,7 +439,8 @@ namespace UMLEditor.Shapes
         {
             for (int i = 0; i < Ports.Length; i++)
             {
-                Ports[i].Paint(g);
+                if(Ports[i]!=null)
+                    Ports[i].Paint(g);
             }
         }
 
@@ -512,6 +532,8 @@ namespace UMLEditor.Shapes
             Ports[index] = port;
         }
 
+        
+
         /// <summary>
         /// Sets the size to the given width and height.
         /// </summary>
@@ -549,8 +571,11 @@ namespace UMLEditor.Shapes
 
             for (int i = 0; i < Ports.Length; i++)
             {
-                Ports[i].Visible = isSelected;
-                Ports[i].Movable = isSelected;
+                if (Ports[i] != null)
+                {
+                    Ports[i].Visible = isSelected;
+                    Ports[i].Movable = isSelected;
+                }
             }
         }
 
