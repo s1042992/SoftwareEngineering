@@ -5,12 +5,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class OoooSmartClock {
+public class OoooSmartClock implements IDialog {
 
 	private IDialog dialog = null;
 	private int zoneIndex = -1;
 	private Date currentDate = null;
 	
+	//new 
+	public int show(){
+		return 3;
+	}
 	public void setUpDialog(IDialog _dialog) {
 		this.dialog = _dialog;
 	}
@@ -68,5 +72,11 @@ public class OoooSmartClock {
 		else returnFormatString += " " + dfTime.format(currentDate) ;
 		
 		return returnFormatString;
+	}
+
+	@Override
+	public int show() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

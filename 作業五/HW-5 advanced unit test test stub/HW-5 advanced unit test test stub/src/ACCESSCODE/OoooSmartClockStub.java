@@ -11,6 +11,7 @@ class OoooSmartClockStub {
 	
 	OoooSmartClock testcase = new OoooSmartClock();
 	
+	
 	//function to check if two value is equal.
 	void assertEquals(boolean expected, boolean actual) {
 		Assertions.assertEquals(expected, actual);
