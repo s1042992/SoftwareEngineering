@@ -5,22 +5,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 import org.junit.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 class RocketControllerTest  {
-
-	RocketControllerMock mytest = null;
+	
+	IRocketSystemBaseMock mytest = null;
+	RocketController controller;
 	ILogger logger;
 	
-	@Before
-	void BeforeTest() {
-		mytest = new RocketControllerMock();
+	
+	@BeforeEach
+	void BeforeEachTest() {
+		controller = new RocketController();
+		logger = new ILogger();
+		mytest = new IRocketSystemBaseMock(logger);
+		controller.setUpRocketSystem(mytest);
 	}
-	
-	
+	@After
+	void AfterTest(){
+		controller = null;
+		logger = null;
+		
+	}
+
 	@Test
-	void test() {
+	void test1() {
+		
+		
+		
 		String Input = "IGNITE 0 1000 AT 0\n" + 
 				"IGNITE 1 500 AT 2\n"+
 				"SHUTOFF 0 AT 5\n"+
@@ -31,10 +45,14 @@ class RocketControllerTest  {
 				"SHUTOFF 0 AT 5\n"+
 				"SHUTOFF 1 AT 6\n";
 		
-		mytest.fireUp(Input);
+		controller.fireUp(Input);
+		
+		//System.out.println(Input);
+		
 		assertEquals(Expect, logger.getLog());
 		
 	}
+	
 	
 	
 	

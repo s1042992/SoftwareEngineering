@@ -4,13 +4,15 @@ public class ILogger {
 	
 	public String content;
 	
-	public void setLog(String message)
-	{
-		content = message;
+	public ILogger() {
+		content = "";
 	}
 	
-	public String getLog()
-	{
+	public void setLog(String message){
+		content = content +message+ "\n";
+	}
+	
+	public String getLog(){
 		return content;
 	}
 }
