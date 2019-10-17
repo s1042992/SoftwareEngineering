@@ -5,16 +5,23 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class OoooSmartClock implements IDialog {
+class OoooSmartClock implements IDialog {
 
-	private IDialog dialog = null;
+	public IDialog dialog = null;
 	private int zoneIndex = -1;
-	private Date currentDate = null;
+	public Date currentDate = null;
 	
-	//new 
-	public int show(){
-		return 3;
+	//new
+	@Override
+	public int show() {
+		return 2;
 	}
+	
+	public void set(int x)
+	{
+		zoneIndex = x;
+	}
+	
 	public void setUpDialog(IDialog _dialog) {
 		this.dialog = _dialog;
 	}
@@ -40,6 +47,7 @@ public class OoooSmartClock implements IDialog {
 	
 	public String getCurrentTimeStamp() {	
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
 		return dateFormat.format(currentDate);
 	}
 	
@@ -74,9 +82,5 @@ public class OoooSmartClock implements IDialog {
 		return returnFormatString;
 	}
 
-	@Override
-	public int show() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 }

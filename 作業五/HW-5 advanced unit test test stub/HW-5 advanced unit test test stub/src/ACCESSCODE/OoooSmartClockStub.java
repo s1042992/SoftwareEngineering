@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import junit.framework.Assert;
+import java.text.DateFormat;
 
 class OoooSmartClockStub {
 	
@@ -13,30 +15,32 @@ class OoooSmartClockStub {
 	
 	
 	//function to check if two value is equal.
-	void assertEquals(boolean expected, boolean actual) {
-		Assertions.assertEquals(expected, actual);
+	void assertEquals(int exp, int b) {
+		Assertions.assertEquals(exp, b);
 	}
-	//function to check if the string is null.
-	boolean isEmpty(String value) {
-        if (value == null || value.trim().equals(""))
-            return true;
-        else
-            return false;
-    }
+	
+	//void assertEquals(IDialog exp, IDialog b) {
+	//	Assertions.assertEquals(exp, b);
+	//}
 	
 	@Test
-	void test() {
-		//System.out.println(testcase.getCurrentTimeStamp());
-		boolean b = isEmpty(testcase.getCurrentTimeStamp());
-	    boolean exp = true;
+	void Stubtest() throws Exception {
+		IDialog d = new OoooSmartClock();
+		d.set(5);
+		int zoneindex = d.show();
+		testcase.dialog=d;
+		testcase.setTimeZone();
+		assertEquals(zoneindex,testcase.getTimeZone());
+		
+	}
+	
+	@Test
+	void Stubtest2() {
+		int b = testcase.show();
+	    int exp = 2;
 		assertEquals(exp,b);
 	}
 	
-	@Test
-	void test2() {
-		boolean b = isEmpty(testcase.getLocalCurrentTimeStamp());
-	    boolean exp = true;
-		assertEquals(exp,b);
-	}
+	
 
 }
