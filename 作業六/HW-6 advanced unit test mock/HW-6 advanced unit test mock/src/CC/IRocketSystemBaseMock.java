@@ -13,13 +13,14 @@ public class IRocketSystemBaseMock implements IRocketSystemBase {
 	public void ignite(int x, int y) {
 		// TODO Auto-generated method stub
 		System.out.println("Hi");
-		logger.setLog("IGNITE 0 1000 AT 0" + "IGNITE 1 500 AT 2");
+		logger.setLog("IGNITE 0 1000 AT 0");
 	}
 
 	@Override
 	public void shutoff(int x) {
 		// TODO Auto-generated method stub
-		logger.setLog("SHUTOFF 0 AT 5" + "SHUTOFF 1 AT 6");
+		System.out.println("Bye");
+		logger.setLog("SHUTOFF 0 AT 5");
 	}
 
 	@Override

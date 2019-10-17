@@ -36,14 +36,10 @@ class RocketControllerTest  {
 		
 		
 		String Input = "IGNITE 0 1000 AT 0\n" + 
-				"IGNITE 1 500 AT 2\n"+
-				"SHUTOFF 0 AT 5\n"+
-				"SHUTOFF 1 AT 6\n";
+				"SHUTOFF 0 AT 5\n";
 		
 		String Expect = "IGNITE 0 1000 AT 0\n" + 
-				"IGNITE 1 500 AT 2\n"+
-				"SHUTOFF 0 AT 5\n"+
-				"SHUTOFF 1 AT 6\n";
+				"SHUTOFF 0 AT 5\n";
 		
 		controller.fireUp(Input);
 		
